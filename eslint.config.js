@@ -5,10 +5,21 @@ import tsEslintParser from '@typescript-eslint/parser'
 import globals from 'globals'
 
 /**
+ * Set the default FlatConfig.languageOptions to 'node' and 'browser'.
+ * @type {NonNullable<import('eslint').Linter.FlatConfig['languageOptions']>}
+ */
+export const envConfig = {
+  globals: {
+    ...globals.node,
+    ...globals.browser,
+  },
+}
+
+/**
  * ESLint Config for TypeScript
  * @type {import('eslint').Linter.FlatConfig}
  */
-const tsEslintConfig = {
+export const tsEslintConfig = {
   files: ['*.ts', '*.tsx', '*.mts', '*.cts'],
   plugins: {
     '@typescript-eslint': tsEslintPlugin,
@@ -44,10 +55,7 @@ export default [
   },
   {
     languageOptions: {
-      globals: {
-        ...globals.node,
-        ...globals.browser,
-      },
+      ...envConfig.globals,
     },
   },
   eslintConfig.configs.recommended,
