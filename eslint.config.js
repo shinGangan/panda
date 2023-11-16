@@ -29,6 +29,30 @@ export const tsEslintConfig = {
   },
   rules: {
     ...tsEslintPlugin.configs['eslint-recommended'].overrides[0].rules,
+    ...tsEslintPlugin.configs.stylistic.rules,
+    /**
+     * This rules is set up to use the same rules as '@typescript-eslint/recommended' in v5.
+     * https://typescript-eslint.io/blog/announcing-typescript-eslint-v6/#updated-configuration-rules
+     */
+    // This rules removed from recommended in v6.
+    'no-extra-semi': 'off',
+    '@typescript-eslint/no-extra-semi': 'error',
+    // This rules added recommended in v6.
+    '@typescript-eslint/no-duplicate-enum-values': 'off',
+    '@typescript-eslint/no-unsafe-declaration-merging': 'off',
+    // This rule moved from recommended to stylistic in v6.
+    // Turn off the rules added by "stylistic" once so that they do not affect the roadmap. Turn it on if necessary.
+    '@typescript-eslint/array-type': 'off',
+    '@typescript-eslint/ban-tslint-comment': 'off',
+    '@typescript-eslint/class-literal-property-style': 'off',
+    '@typescript-eslint/consistent-generic-constructors': 'off',
+    '@typescript-eslint/consistent-indexed-object-style': 'off',
+    '@typescript-eslint/consistent-type-assertions': 'off',
+    '@typescript-eslint/consistent-type-definitions': 'off',
+    '@typescript-eslint/no-confusing-non-null-assertion': 'off',
+    '@typescript-eslint/prefer-for-of': 'off',
+    '@typescript-eslint/prefer-function-type': 'off',
+
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
